@@ -1,0 +1,23 @@
+<ion-view view-title="Village">
+   <ion-nav-bar class="bar-stable">
+        
+        <ion-nav-buttons side="right"> <button ng-click="openVillage()">New</button>&nbsp;&nbsp; </ion-nav-buttons>
+   </ion-nav-bar>
+  
+  <ion-content>
+
+
+<div class="list" ng-repeat="item in appData.towns">
+  <div class="item item-divider">
+    {{item.name}}
+  </div>
+  <div class="item item-text-wrap" ng-repeat="itemSec in item.villages"  ng-click="openVillage($parent.$index,$index)">
+    <b>{{$index+1}},</b>&nbsp;{{itemSec.name}}
+    <img  ng-src="{{CONFIG.path}}{{itemSec.picture?itemSec.picture:'default.jpg'}}" onerror="defaultImg()" style="position:absolute;right:10px;top:5px;width:30px;height:30px;border-radius:5px;" />
+  </div>
+  
+
+    </div>
+
+  </ion-content>
+</ion-view>

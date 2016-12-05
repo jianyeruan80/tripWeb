@@ -1,0 +1,102 @@
+<ion-view > 
+
+
+<ion-header-bar  class="bar-dark" style="height:50px;line-height:40px;font-size:25px;color:#fff">
+       
+  <div class="buttons">
+    <span href="xxxxxxxxxxx" > Logo 
+
+
+
+</span>&nbsp
+        <span style="color:#fff;border-radius:50%;color:#F6F356;transform: scale(1.5); "  ui-sref="home.special" >特价
+
+
+
+</span>&nbsp;
+               <span style="color:#fff"  ui-sref="home.feature">特色</span>&nbsp;
+        <span style="color:#fff" ui-sref="home.customer">订制</span>&nbsp;
+        <span style="color:#fff" ui-sref="home.rentcar">租车</span>&nbsp;
+        <span style="color:#fff" href="xxxxxxxxxxx">横跨国家</span>&nbsp;
+  </div>
+  <h1 class="title" style='font-family: "Merienda One" !important'>New York Locate</h1>
+  <div class="buttons">
+    <span style="color:#fff" href="xxxxxxxxxxx">注 册</span>&nbsp;
+        <span style="color:#fff" href="xxxxxxxxxxx">登 录</span>&nbsp;
+  </div>
+</ion-header-bar>
+
+
+
+ <!-- <ion-nav-bar class="bar-dark" style="height:50px;line-height:35px;font-size:25px;color:#fff">
+       
+        <ion-nav-buttons side="left" >
+        <span href="xxxxxxxxxxx" > Logo 
+
+
+
+</span>&nbsp
+        <span style="color:#fff;border-radius:50%;color:#F6F356;transform: scale(1.5); "  ui-sref="home.special" >特价
+
+
+
+</span>&nbsp;
+               <span style="color:#fff"  ui-sref="home.special">特色</span>&nbsp;
+        <span style="color:#fff" href="xxxxxxxxxxx">订制</span>&nbsp;
+        <span style="color:#fff" ui-sref="home.rentcar">租车</span>&nbsp;
+        <span style="color:#fff" href="xxxxxxxxxxx">横跨国家</span>&nbsp;
+        </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <span style="color:#fff" href="xxxxxxxxxxx">注 册</span>&nbsp;
+        <span style="color:#fff" href="xxxxxxxxxxx">登 录</span>&nbsp;
+    </ion-nav-buttons>
+      
+</ion-nav-bar> -->
+<ion-content class="cloud-background">
+         <ion-slide-box on-slide-changed="slideHasChanged($index)" style="width:100%;height:40vh;" auto-play=true show-pager=false  does-continue=true slide-interva=3000>
+              <ion-slide>
+                <div    style="height:100%;background-size:cover;background-image:url('img/1.jpg')"></div>
+              </ion-slide>
+              <ion-slide>
+              <div    style="height:100%;background-size:cover;background-image:url('img/2.jpg')"></div>
+                
+              </ion-slide>
+              <ion-slide>
+                <div    style="height:100%;background-size:cover;background-image:url('img/3.jpg')"></div>
+              </ion-slide>
+            </ion-slide-box>
+
+<div style="color:#fff;font-size:20px;margin:15px 0 10px 3%">
+<span class="angleActiveRight">美国旅游</span>   <span class="angleRight">加拿大旅游</span> <span class="angleRight">欧洲旅游</span></div>   
+ <ul class="waterfall-list" ng-waterfall cols="3" col-margin="10" style="margin-left:3%;width:80%;">
+        <li ng-repeat="image in images" repeat-finished>
+            <div class="data-block"  style="background:#fff">
+                <img src="{{image.url}}" alt="{{image.summary}}" class="imgHo"/>
+                <p style="font-size: 20px">{{image.title}}纽约一日游加长版，深度名胜之旅</p>
+                <p>{{image.summary}}</p>
+                   <div  data-number="8 折" class="begin">
+              深度名胜之旅<br/>
+              <h1>$500</h1>
+            </div>
+            </div>
+            <div  data-number="8 折"  style="position: absolute;right:20px;bottom:100px;padding:10px;font-size:25px;color:#fff;background:#000;border-radius:5px;">$5000</div>
+            <div  data-number="8 折" class="cpright" style=""></div>
+         
+        </li>
+        <!-- <div class="loadMore" ng-if="loadMore" ng-infinite-scroll ng-click="loadMoreData()">{{text}}</div> -->
+    </ul>
+
+ 
+
+  </ion-content>
+   <div class="CloudLabel"> 
+    
+            <a href="javascript:search('餐馆请人','category')">纽约</a><a href="javascript:search('理容请人','category')">洛杉矶</a>
+      <a href="javascript:search('家庭聘请','category')">旧金山</a><a href="javascript:search('聘请','category')">拉斯维加斯</a>
+      <a href="javascript:search('求职','category')">西雅图</a><a href="javascript:search('房屋出租','category')">芝加哥</a>
+      <a href="javascript:search('餐厅出让','category')">夏威夷</a><a href="javascript:search('生意出让','category')">奥兰多</a>
+      
+      
+   </div>
+</ion-view>
+

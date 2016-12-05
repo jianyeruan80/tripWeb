@@ -1,0 +1,92 @@
+<ion-view view-title="{{appData.title}}">
+   <ion-nav-bar class="bar-stable">
+     
+
+      <ion-nav-buttons side="right">
+       <button ng-click="addUrl()">vedio</button>&nbsp;&nbsp; <button ng-click="uploadPicture('picture')">album</button>&nbsp;&nbsp;<button ng-click="logout()">Logout</button>
+
+
+      </ion-nav-buttons>
+</ion-nav-bar>
+ <ion-content>
+<div class="formcontainer">
+   <div class="icon_wrapper" ng-click="uploadPicture('logo')" >
+    <img src="{{ME.path}}{{appData.store.logo?appData.store.logo:'defalut.jpg'}}" id="logoSrc"   onError="defaultLogo()"  class="logoImg" />
+   </div>
+  
+  <form enctype="multipart/form-data" method="post" name="storeForm" ng-submit="storeUpdate()" >
+    <div style="display:flex; justify-content: space-between;flex-flow:row wrap">
+       <input type="file" name="logo" id="logo" ng-model="files" style="display:none" onchange="angular.element(this).scope().showPreview(this)"/>  
+
+    <input  placeholder="logo" type="text" id="logoValue" style="display:none"  ng-model="appData.store.logo"  style="width:48%; border-bottom:solid red 2px;" required/>
+
+    <input  placeholder="Stroe Name" type="text" ng-model="appData.store.name" style="width:48%; border-bottom:solid red 2px;" required/>
+    
+<input  placeholder="tax" type="number" ng-model="appData.store.tax"    style="width:48%; border-bottom:solid red 2px;" step="0.001" required/>
+    
+      
+    <input  placeholder="Webside" type="text" ng-model="appData.store.webSite"   style="width:100%"/> 
+      
+
+      <input type="text" placeholder="Phone Num1"  class="clo23"   ng-model="appData.store.phoneNum1"/> 
+      <input type="text"  placeholder="Phone Num2"  class="clo23" ng-model="appData.store.phoneNum2"/>  
+      <input type="text" placeholder="Email"  class="clo23"   ng-model="appData.store.email"/> 
+      <input type="text" placeholder="Fax"  class="clo23"  ng-model="appData.store.fax"/> 
+      <input type="text"  class="clo32" placeholder="state"    ng-model="appData.store.addressInfo.state"/>  
+      <input type="text" class="clo32" placeholder="city"   ng-model="appData.store.addressInfo.city"/> 
+      <input type="text"  class="clo32" placeholder="zipcode"  ng-model="appData.store.addressInfo.zipcode"/> 
+       
+       <input type="text"   class="clo70"  placeholder="address"   ng-model="appData.store.addressInfo.address"/>  
+       <input type="text"  class="clo28"   placeholder="coordinates"   ng-model="appData.store.addressInfo.location.coordinates" ng-focus="getCoordinates()"/>  
+      
+      <input type="text"   placeholder="open Time"   ng-model="appData.store.openTime"/>  
+        
+      <!-- <input type="text"  placeholder="license Key"   ng-model="appData.store.licenseKey"/>   -->
+    </div>
+ <input type="file" name="picture" id="picture" ng-model="files" style="display:none" onchange="angular.element(this).scope().showMorePreview(this)"/>
+ <div style="width:100%;border-bottom:solid green 2px;text-align: right;"><span style="background:green;color:#fff;padding:3px 5px;border-radius:5px 5px 0 0">Albums</span></div>
+
+
+<div style="position:relative;display:inline-block;width:24%;left:2%;margin:10px 0;" ng-repeat="item in appData.store.pictures">
+ <img src="{{ME.path}}{{item.name}}"   style="width:98%;height:200px"  /> <br/>
+ <input style="width:98%" />
+ <div style="position: absolute;top:10px;right:10px" ng-click="del(item._id)" >del</div></div>
+  
+
+ <br/>
+ <div style="width:100%;border-bottom:solid green 2px;text-align: right;"><span style="background:green;color:#fff;padding:3px 5px;border-radius:5px 5px 0 0">Vedio</span></div>
+
+
+<!--   -->
+<video ng-src="{{ item.path | trustUrl }}" controls ng-repeat="item in appData.store.videos">
+ <!-- <video ng-src="{{item.path}}" controls  ng-repeat="item in appData.store.videos"></video> -->
+<!--  <video style="width:24%;margin:5px;" controls ng-repeat="item in appData.store.videos">
+      <source id="mp4"  type="video/mp4" src="{{item.path}}">
+       
+     </video> -->
+ <div style="position: absolute;top:10px;right:10px" ng-click="del(item._id)" >del</div></div>
+  
+
+
+
+ 
+ <input type="submit" value="Save" id="form_button" style="position: absolute;right:10px;top:10px" />
+  </form>
+</div>
+
+  
+   
+  
+
+
+   
+</div>
+
+
+
+
+
+  
+
+</ion-content>
+</ion-view>

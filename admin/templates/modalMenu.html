@@ -1,0 +1,67 @@
+  <ion-modal-view class="openmodal100">
+  
+
+  <ion-scroll direction="xy">
+ 
+   <!-- style="margin-left:50%;transform:translate(-50%,0)"  -->
+  <div class="tree" style=" white-space: nowrap;width:2500%;min-height:100%">
+    <ul>
+        <li>
+            <a href="#" ng-click="openSort()">ALL GLOBAL</a>
+            <ul> 
+              <li ng-repeat="itema in appData.menus">
+               <a href="#" ng-click="openSort('G','{{itema._id}}')">{{itema.name}}</a>
+                        <ul>
+                             <li ng-repeat="itemb in itema.states">
+                                   <a href="#"  style="background:yellow;" ng-click="openSort('C','{{itemb._id}}')">{{itemb.name}}</a>
+                                      <ul>
+                                           <li ng-repeat="itemc in itemb.citys">
+                                                 <a href="#"  style="background:yellow;" ng-click="openSort('C','{{itemc._id}}')">{{itemc.name}}</a>
+                                                                  
+                                                                 <ul>
+                                                         <li ng-repeat="itemd in itemc.towns">
+                                                               <a href="#"  style="background:yellow;" ng-click="openSort('C','{{itemc._id}}')">{{itemc.name}}</a>
+                                                                  
+
+
+                                                                   <ul class="vertical">
+                                                                        <li ng-repeat="iteme in itemd.villages">
+                                                                             <a href="#">{{iteme.name}}</a>
+                                                                        </li>  
+                                                                  </ul>
+                                                         </li>
+                                                    </ul>
+
+                                                    <!--  <ul class="vertical">
+                                                          <li ng-repeat="itemc in itemb.items">
+                                                               <a href="#">{{itemc.name}}<font color=red>&nbsp;${{itemc.price}}</font></a>
+                                                          </li>  
+                                                    </ul> -->
+                                           </li>
+                                      </ul>
+
+
+                                      <!--  <ul class="vertical">
+                                            <li ng-repeat="itemc in itemb.items">
+                                                 <a href="#">{{itemc.name}}<font color=red>&nbsp;${{itemc.price}}</font></a>
+                                            </li>  
+                                      </ul> -->
+                             </li>
+                        </ul>
+
+              </li>
+            </ul>
+          
+   </li>
+        </ul>
+
+</div>
+
+
+
+
+
+</ion-scroll>
+<a class="button ion-close-circled" ng-click="closeMenu();" style="font-size:25px;position:fixed;top:0px;right:0px;background:#fff" ></a>
+</ion-modal-view>
+
