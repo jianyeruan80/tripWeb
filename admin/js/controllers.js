@@ -244,21 +244,19 @@ $scope.getCoordinates=function(){
    
 
        $scope.storeUpdate=function(){
-         
-        
-                
-                var currentUrl="stores";
+
+         var currentUrl="stores";
                 var method="POST";
                 if($scope.appData.store && $scope.appData.store._id){
                   var currentUrl="stores/"+$scope.appData.store._id;
                   method="PUT";
                 }
-                
-                
+    $scope.appData.store.logo= document.getElementById("logoValue").value || null;
+           
+         console.log("==============");
 
-          $scope.appData.store.logo= document.getElementById("logoValue").value || null;
-            console.log($scope.appData.store)
-
+console.log($scope.appData.store);
+         console.log("==============");
 
 
        api.request(method,currentUrl,$scope.appData.store).then(function(data){
@@ -269,11 +267,7 @@ $scope.getCoordinates=function(){
        
 }
 $scope.getStore();
-/* $scope.getStore();
- $timeout(function() {
-    $scope.getHours(); 
- }, 0);
- */
+
 
   })
 

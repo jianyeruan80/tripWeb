@@ -7,7 +7,7 @@ angular.module('server.login',[])
   $scope.loginData.merchantId="001";
 
   $scope.doLogin=function(){
-  var currentUrl="admin/login",method="POST";
+  var currentUrl="admin/loginBak",method="POST";
   api.request(method,currentUrl,$scope.loginData,{},{ 'Content-Type': 'application/json; charset=UTF-8'}).then(function(data){
           ME.info=data;
           ME.merchantId=$scope.loginData.merchantId || picture;

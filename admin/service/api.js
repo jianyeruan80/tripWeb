@@ -10,6 +10,7 @@ angular.module('server.api', [])
               var contentType=type || { 'Content-Type': 'application/json; charset=UTF-8'};
                   
                 contentType["Authorization"]= "Bearer "+ME.info.accessToken;
+             
               $http({
                       method: method,
                       url: currentUrl,
