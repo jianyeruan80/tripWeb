@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 //value可与你修改，constant不能修改。 value不能在provider内访问，constant可以
-angular.module('server', ['ionic', 'server.controllers','server.api','server.login'])
+angular.module('server', ['ionic', 'server.controllers','server.api','server.login','server.navs'])
 .constant('ME', {'api':apiServiceUrl+'api/','info':{},'merchantId':"","path":apiServiceUrl})
 .run(function($ionicPlatform,$rootScope,ME,$location) {
   $rootScope.ME = ME;
@@ -81,6 +81,15 @@ angular.module('server', ['ionic', 'server.controllers','server.api','server.log
         'menuContent': {
           templateUrl: 'templates/customer.html',
           controller: 'CustomerCtrl'
+        }
+      }
+    })
+  .state('app.navs', {
+      url: '/navs',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/navs.html',
+          controller: 'NavsCtrl'
         }
       }
     })

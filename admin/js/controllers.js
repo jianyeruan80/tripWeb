@@ -1,9 +1,8 @@
 angular.module('server.controllers', []) /*['ng-sortable']*/
      .filter('hasPerms', function() {
-            return function(data, scope,customerxx) {
-              
-                 return (data & 3)>0;                
-            }
+          return function(data, scope,customerxx) {
+              return (data & 3)>0;                
+           }
         })
      .filter('trustUrl', function ($sce) {
     return function(url) {
@@ -14,7 +13,7 @@ angular.module('server.controllers', []) /*['ng-sortable']*/
   $scope.appData={};
   $scope.appData.store={};
   $scope.appData.store.pictures=[];
-  $scope.appData.store.vedios=[{"path":"http://www.w3schools.com/html/mov_bbb.mp4"}];
+  /*$scope.appData.store.vedios=[{"path":"http://www.w3schools.com/html/mov_bbb.mp4"}];*/
   $scope.appData.store.tax=0;
   $scope.appData.store.addressInfo={};
   $scope.config={};
@@ -66,7 +65,12 @@ $scope.html5Reader=function(file,pic)
       api.request(method,currentUrl,oDataSource,{},{ 'Content-Type': undefined}).then(function(data){
           var json={
           "name":data
-        }
+        } 
+        console.log("==================");
+        console.log(data);
+        console.log($scope.appData.store)
+        console.log("==================");
+        $scope.appData.store.pictures = $scope.appData.store.pictures || [];
          $scope.appData.store.pictures.push(json);
          file.value=null; 
        })
@@ -190,13 +194,13 @@ $scope.getRoles=function(){
  
 })
 .controller('ManagerCtrl', function($scope,$ionicModal, $ionicLoading,$timeout,$ionicPopup,$http,ME,api) {
-$scope.appData.store.vedios=$scope.appData.store.vedios || [];
+/*$scope.appData.store.vedios=$scope.appData.store.vedios || [];
         $timeout(function(){
           $scope.videoHTML ='<video id="video"  src="http://www.videogular.com/assets/videos/videogular.mp4" style="width:300px;height:240px" controls></video>'; 
         },10) 
         
 
-alert($scope.appData.store.vedios[0].path);
+
 $scope.addUrl=function() {
     var path = prompt("Please enter your url", "http://");
     if (path != null) {
@@ -230,15 +234,9 @@ $scope.getCoordinates=function(){
 
 
   $scope.getStore=function(){
-          var currentUrl=ME.api+"stores/merchants/id";
-           $http({ method:"GET",url: currentUrl, 
-             headers: { 'Content-Type': 'application/json; charset=UTF-8', Authorization: "Bearer "+ME.info.accessToken},
-           }).success(function(data){
-             $scope.appData.store=data;
-
-           }).error(function(err){
-             $scope.error(err.message);
-           })
+         api.request("GET","stores/merchants/id").then(function(data){
+          $scope.appData.store=data;
+       })
             
 }
    
@@ -252,21 +250,14 @@ $scope.getCoordinates=function(){
                   method="PUT";
                 }
     $scope.appData.store.logo= document.getElementById("logoValue").value || null;
-           
-         console.log("==============");
-
-console.log($scope.appData.store);
-         console.log("==============");
-
-
-       api.request(method,currentUrl,$scope.appData.store).then(function(data){
+      api.request(method,currentUrl,$scope.appData.store).then(function(data){
             $scope.managerData.store=data;
        })
 
    
        
 }
-$scope.getStore();
+$scope.getStore();*/
 
 
   })
