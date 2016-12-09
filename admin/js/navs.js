@@ -35,7 +35,6 @@ angular.module('server.navs',[])
          $scope.getNavs();
        })
   }
- alert("OK")
 });
 
          
