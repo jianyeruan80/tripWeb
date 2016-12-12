@@ -1,15 +1,42 @@
 <ion-view view-title="{{appData.title}}">
    <ion-nav-bar class="bar-stable">
-     
-
-      <ion-nav-buttons side="right">
-       <button ng-click="addUrl()">vedio</button>&nbsp;&nbsp; <button ng-click="uploadPicture('picture')">album</button>&nbsp;&nbsp;<button ng-click="logout()">Logout</button>
-
-
-      </ion-nav-buttons>
+     <ion-nav-buttons side="right">
+      <button class="customerButton purple" ng-click="logout()">Save</button>&nbsp;&nbsp;
+      <button class="customerButton purple" ng-click="logout()">Logout</button>
+</ion-nav-buttons>
 </ion-nav-bar>
  <ion-content>
-<div class="formcontainer">
+
+  <fieldset class="clo100">
+                 <legend class="wa b0 tac"> 
+                 <img src="{{ME.path}}{{appData.store.logo?appData.store.logo:'defalut.jpg'}}" id="logoSrc"   onError="defaultLogo()"  class="logo" /></legend>
+                
+                <div class="formcontainer">
+            <form enctype="multipart/form-data" method="post" name="navsForm" ng-submit="saveNavs()" >
+                <input type="file" name="picture" id="navsPicture" style="display:none" onchange="angular.element(this).scope().showPreview(this)"/>
+                <input type="submit" class="dsn" id="submit-form" value="submit"/>
+                <div class="content">
+ 
+                 <input  placeholder="Name" title="Name" type="text" ng-model="navs.nav.name" class="clo48 required-b" required/>
+                 <input  placeholder="Order" title="Order" type="text" ng-model="navs.nav.order" class="clo23 required-b" required/>
+                 <input  placeholder="Model" title="Model" type="text" ng-model="navs.nav.model" class="clo23 required-b" required/>
+                 <fieldset class="clo100">
+                 <legend class="wa b0 tac">Gallery</legend>
+                  <div class="flexTable">
+                  <div ng-repeat="item in navs.nav.gallerys" class="item-1 psr"
+                    style="position:relative;background: url('{{ME.path}}{{item.name}}');background-size: cover;background-repeat: no-repeat;" >
+                     <i class="fa fa-close" ng-click="delPicture($index)"></i>
+                     <input class="psa pl clo100" style="bottom:-25px;" ng-model="item.title"/>
+                    </div>
+
+                    <div  class="item-1" ng-click="uploadPicture('navsPicture')" ><h1 class="clo100">+</h1></div>
+                  </div>
+                 </fieldset>
+                 </div>
+              </form>
+        </div>
+</fieldset>
+<!-- <div class="formcontainer">
        <div class="icon_wrapper" ng-click="uploadPicture('logo')" >
             <img src="{{ME.path}}{{appData.store.logo?appData.store.logo:'defalut.jpg'}}" id="logoSrc"   onError="defaultLogo()"  class="logo" />
         </div>
@@ -41,9 +68,9 @@
                <input type="text"   placeholder="open Time"   ng-model="appData.store.openTime"/>  
                  
                
-             </div>
+             </div> -->
 
- <input type="file" name="picture" id="picture" ng-model="files" style="display:none" onchange="angular.element(this).scope().showMorePreview(this)"/>
+<!--  <input type="file" name="picture" id="picture" ng-model="files" style="display:none" onchange="angular.element(this).scope().showMorePreview(this)"/>
  <div style="width:100%;border-bottom:solid green 2px;text-align: right;"><span style="background:green;color:#fff;padding:3px 5px;border-radius:5px 5px 0 0">Albums</span></div>
 
 
@@ -55,7 +82,7 @@
 
  <br/>
  <div style="width:100%;border-bottom:solid green 2px;text-align: right;"><span style="background:green;color:#fff;padding:3px 5px;border-radius:5px 5px 0 0">Vedio</span></div>
-
+ -->
 
 <!-- 
 <video ng-src="{{ item.path | trustUrl }}" controls ng-repeat="item in appData.store.videos" />
@@ -65,7 +92,7 @@
 
 
 
- 
+<!--  
  <input type="submit" value="Save" id="form_button" style="position: absolute;right:10px;top:10px" />
   </form>
 </div>
@@ -74,7 +101,7 @@
    
   
 
-
+ -->
    
 
 

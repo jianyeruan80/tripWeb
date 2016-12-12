@@ -1,38 +1,21 @@
-<ion-modal-view class="openmodal">
-          <ion-header-bar>
-             <h1 class = "title">Village</h1>
-         
-
-                   <div class="buttons">
-     
-  <a class="button ion-close-circled" ng-click="closeVillage();" style="font-size:25px;"></a>
+<ion-view view-title="Item">
+   <ion-header-bar>
+             <h1 class = "title">Items</h1>
+    <div class="buttons">
+    <button class = "button icon icon-right" ng-click="openMenu()">checkMenu</button>&nbsp;&nbsp;
+  <button ng-click="openNavs()">New</button>
 </div>
-          </ion-header-bar>
-          <ion-content>
-<div class="formcontainer">
-   <form  ng-submit="villageUpdate()" >
-       <div style="display:flex; justify-content: space-between;flex-flow:row wrap">
-          
-          <input   type="text" style="visibility: hidden" class="clo70 required">
-
-
-         <select ng-model="appData.village.town" class="clo23 required">
-              <option value="{{item._id}}" ng-repeat="item in appData.towns">{{item.name}}</option>
-        </select>
-
-          <input  placeholder="name"  type="text" ng-model="appData.village.name" class="clo32 required">
-          <input  placeholder="abbreviation" type="text" ng-model="appData.village.abbreviation" class="clo32 ">
-          <input  placeholder="descript" type="text" ng-model="appData.village.descript" class="clo32 ">
-    
-       </div>
-
-
-
+</ion-header-bar>
   
-       <div class="submit">
-        <input type="submit" value="Save" id="form_button" />
-        <input type="button"   ng-if="!!appData.village._id"  ng-click="deleteVillage()"    value="delete" style="margin:25px;">
-      </div>
-  </form>
-</div>
-  </ion-content></ion-modal-view>
+  <ion-content>
+
+
+  <div class="list" ng-repeat="item in appData.itemGroups">
+     <div class="item item-divider">
+       {{item.name}}
+    </div>
+    <div class="item item-text-wrap" ng-repeat="itemSec in item.items"  ng-click="openItem('{{itemSec._id}}')">
+   </div>
+  </div>
+  </ion-content>
+</ion-view>

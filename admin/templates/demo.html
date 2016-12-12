@@ -1,0 +1,231 @@
+<ion-view view-title="Item">
+   
+<ion-header-bar>
+             <h1 class = "title">NAVS</h1>
+          
+
+
+     <div class="buttons">
+     <button class = "button icon icon-right" ng-click="openMenu()">checkMenu</button>&nbsp;&nbsp;
+  <button ng-click="openItem()">New</button>
+</div>
+
+
+   </ion-header-bar>
+  
+  <ion-content style="padding:10px;">
+
+
+  <div class="wrapTable">
+    
+    <div class="row header">
+      <div class="cell col20">
+        Name
+      </div>
+      <div class="cell">
+        Age
+      </div>
+      <div class="cell">
+        Occupation
+      </div>
+      <div class="cell">
+        Location
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="cell">
+        Luke Peters Luke PetersLuke PetersLuke PetersLuke PetersLuke PetersLuke Peters
+      </div>
+      <div class="cell">
+        25
+      </div>
+      <div class="cell">
+        Freelance Web Developer
+      </div>
+      <div class="cell">
+        Brookline, MA
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="cell">
+        Joseph Smith
+      </div>
+      <div class="cell">
+        27
+      </div>
+      <div class="cell">
+        Project Manager
+      </div>
+      <div class="cell">
+        Somerville, MA
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="cell">
+        Maxwell Johnson
+      </div>
+      <div class="cell">
+        26
+      </div>
+      <div class="cell">
+        UX Architect & Designer
+      </div>
+      <div class="cell">
+        Arlington, MA
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="cell">
+        Harry Harrison
+      </div>
+      <div class="cell">
+        25
+      </div>
+      <div class="cell">
+        Front-End Developer
+      </div>
+      <div class="cell">
+        Boston, MA
+      </div>
+    </div>
+    
+  </div>
+  <ul class="pagination modal-1">
+  <li><a href="#" class="prev">&laquo</a></li>
+  <li><a href="#" class="active">1</a></li>
+  <li> <a href="#">2</a></li>
+  <li> <a href="#">3</a></li>
+  <li> <a href="#">4</a></li>
+  <li> <a href="#">5</a></li>
+  <li> <a href="#">6</a></li>
+  <li> <a href="#">7</a></li>
+  <li> <a href="#">8</a></li>
+  <li> <a href="#">9</a></li>
+  <li><a href="#" class="next">&raquo;</a></li>
+</ul><br>
+<ul class="pagination modal-2">
+  <li><a href="#" class="prev">&laquo </a></li>
+  <li><a href="#">1</a></li>
+  <li> <a href="#">2</a></li>
+  <li> <a href="#" class="active">3</a></li>
+  <li> <a href="#">4</a></li>
+  <li> <a href="#">5</a></li>
+  <li> <a href="#">6</a></li>
+  <li> <a href="#">7</a></li>
+  <li> <a href="#">8</a></li>
+  <li> <a href="#">9</a></li>
+  <li><a href="#" class="next">  &raquo;</a></li>
+</ul><br>
+<ul class="pagination modal-3">
+  <li><a href="#" class="prev">&laquo</a></li>
+  <li><a href="#" class="active">1</a></li>
+  <li> <a href="#">2</a></li>
+  <li> <a href="#">3</a></li>
+  <li> <a href="#">4</a></li>
+  <li> <a href="#">5</a></li>
+  <li> <a href="#">6</a></li>
+  <li> <a href="#">7</a></li>
+  <li> <a href="#">8</a></li>
+  <li> <a href="#">9</a></li>
+  <li><a href="#" class="next">&raquo;</a></li>
+</ul><br>
+  
+  
+  <div class="formcontainer">
+      <form enctype="multipart/form-data" method="post" name="storeForm" ng-submit="storeUpdate()" >
+
+             <div class="content">
+                 
+                
+                 <input  placeholder="Stroe Name" type="text" ng-model="appData.store.name" class="clo23 required-b" required/>
+                 <input  placeholder="tax" type="number" ng-model="appData.store.tax"   class="clo23 required-b" step="0.001" required/>
+                 <input  placeholder="Webside" type="text" ng-model="appData.store.webSite"  class="clo23 required-b"/> 
+                 <select class="clo23 required">
+  <option value ="volvo">Volvo</option>
+  <option value ="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+              <!--  <input type="checkbox"  class="clo23 required-b">test</input><input type="radio"  class="clo23 required-b">test</input> -->
+
+<input type="radio" name="radio" id="radio1">
+<label for="radio1"  class="clo23"><span></span>기본</label>
+
+<input type="radio" name="radio" id="radio2" checked="checked">
+<label for="radio2"><span></span>선택</label>
+
+<input type="radio" name="radio" id="radio3" disabled="disabled">
+<label for="radio3"><span></span>선택 불가</label>
+
+<br />
+<br />
+<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+<input type="checkbox" name="checkbox" id="checkbox1">
+<label for="checkbox1"><span></span>기본</label>
+
+<input type="checkbox" name="checkbox" id="checkbox2" checked="checked">
+<label for="checkbox2"><span></span>선택</label>
+
+<input type="checkbox" name="checkbox" id="checkbox3" disabled="disabled">
+<label for="checkbox3"><span></span>선택 불가</label>
+ </div>
+</form>
+
+<input class="customerButton" type=submit value="test"/>
+ </div>
+
+ <fieldset>
+  <legend style="width:auto;border:0;text-align: center;">Radio Control Quality</legend>
+  </fieldset>
+  <ol class="wtree">
+        <li><span>Life</span>
+            <ol>
+                <li>
+                    <span>Personal Issues</span>
+                    <ol>
+                        <li><span>Our Staff Picks</span></li>
+                        <li><span>Balancing Work and Life</span></li>
+                     
+                    </ol>
+                </li>
+               
+               
+            </ol>
+        </li>
+         <li><span>Life</span>
+            <ol>
+                <li>
+                    <span>Personal Issues</span>
+                    <ol>
+                        <li><span>Our Staff Picks</span></li>
+                        <li><span>Balancing Work and Life</span></li>
+                     
+                    </ol>
+                </li>
+               
+               
+            </ol>
+        </li>
+    </ol>
+  </ion-content>
+</ion-view>
+
+<!-- 
+<div class="row">
+  <div class="col col-33 col-offset-33">.col</div>
+  <div class="col">.col</div>
+</div>
+<div class="flex-container" ng-repeat-end>
+            <div  ng-class="{'flex-item':true,'statusDisable':!obj.status,'special':!!obj.merchant_ids}" ng-repeat="obj in item.perms | orderBy:['subject','perm'] " data-perm="{{obj.value}}"    ng-click="permFind($event)" title="{{obj.merchant_ids}}">
+                     <label class="admin--label" style="margin-top:-10px;" ng-click="stop($event)">
+                     <input   class="admin--radio" type="checkbox" ng-model="obj.key" 
+                             ng-true-value="'{{obj.value}}'" ng-false-value="'0'" />
+                    <span class="admin--checkbox admin--radioInput"></span>
+                    </label> {{obj.subject}}-{{obj.action}}-[{{obj.perm}}] 
+           </div>
+        </div>
+ -->

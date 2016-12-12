@@ -20,12 +20,12 @@ angular.module('server.controllers', []) /*['ng-sortable']*/
   $scope.appData.perms=[];
   $scope.appData.roles=[];
   $scope.appData.users=[];
+  
   $scope.logout=function(){
     ME.info={};
     $location.path("/admin");
    } 
-
-$scope.html5Reader=function(file,pic)
+  $scope.html5Reader=function(file,pic)
     {
           var file = file.files[0];
           var reader = new FileReader();
@@ -33,28 +33,13 @@ $scope.html5Reader=function(file,pic)
             reader.onload = function(e){
             pic.src=this.result;
         }
-       }
-   $scope.uploadPicture=function(id){
-      
+    }
+  $scope.uploadPicture=function(id){
       document.getElementById(id).click();
   }
-  $scope.showPreview=function(o){
-     $scope.appData.pictures=$scope.appData.pictures || [];
-       var byId=o.id;
-        var pic = document.getElementById(byId+'Src');
-       var file = document.getElementById(byId);
-       $scope.html5Reader(file,pic);
-      var oDataSource = new FormData();
-      oDataSource.append('picture', file.files[0]);
-      var currentUrl="uploadPic",method="POST";
-      api.request(method,currentUrl,oDataSource,{},{ 'Content-Type': undefined}).then(function(data){
-         document.getElementById(byId+"Value").value=data;
-        
-        file.value=null; 
-       })
-
-    }
-     $scope.showMorePreview=function(o){
+  
+    /* $scope.showMorePreview=function(o){
+      alert("OK");
        var byId=o.id;
         var pic = document.getElementById(byId+'Src');
        var file = document.getElementById(byId);
@@ -75,7 +60,7 @@ $scope.html5Reader=function(file,pic)
          file.value=null; 
        })
 
-    }
+    }*/
 /*    $scope.addVedio=function(){
       
        $scope.appData.store.vedios.push(document.getElementById("vedioSrc").value);

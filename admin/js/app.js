@@ -93,6 +93,15 @@ angular.module('server', ['ionic', 'server.controllers','server.api','server.log
         }
       }
     })
+    .state('app.demo', {
+      url: '/demo',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/demo.html'
+        
+        }
+      }
+    })
 
 /*     state('app.order', {
       url: '/order',
