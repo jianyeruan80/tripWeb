@@ -1,35 +1,52 @@
 <ion-view view-title="{{appData.title}}">
    <ion-nav-bar class="bar-stable">
      <ion-nav-buttons side="right">
-      <button class="customerButton purple" ng-click="logout()">Save</button>&nbsp;&nbsp;
+      
+       <label for="submit-form" class="customerButton purple">Save</label>&nbsp;&nbsp;
       <button class="customerButton purple" ng-click="logout()">Logout</button>
 </ion-nav-buttons>
 </ion-nav-bar>
  <ion-content>
 
   <fieldset class="clo100">
-                 <legend class="wa b0 tac"> 
-                 <img src="{{ME.path}}{{appData.store.logo?appData.store.logo:'defalut.jpg'}}" id="logoSrc"   onError="defaultLogo()"  class="logo" /></legend>
+                 <legend class="wa b0 txtc"> 
+          <img src="{{ME.path}}{{appData.store.logo?appData.store.logo:'defalut.jpg'}}"  ng-click="uploadPicture('logoPicture')"  onError="defaultLogo()"  class="logo" /></legend>
                 
-                <div class="formcontainer">
-            <form enctype="multipart/form-data" method="post" name="navsForm" ng-submit="saveNavs()" >
-                <input type="file" name="picture" id="navsPicture" style="display:none" onchange="angular.element(this).scope().showPreview(this)"/>
+                <div class="formcontainer" style="margin-top: -10px">
+            <form enctype="multipart/form-data" method="post" name="navsForm" ng-submit="saveStore()" >
+                <input type="file" name="picture" id="logoPicture" style="display:none" onchange="angular.element(this).scope().showPreview(this)"/>
+                <input type="file" name="picture" id="gallery" style="display:none" onchange="angular.element(this).scope().showMorePreview(this)"/>
                 <input type="submit" class="dsn" id="submit-form" value="submit"/>
+                
                 <div class="content">
- 
-                 <input  placeholder="Name" title="Name" type="text" ng-model="navs.nav.name" class="clo48 required-b" required/>
-                 <input  placeholder="Order" title="Order" type="text" ng-model="navs.nav.order" class="clo23 required-b" required/>
-                 <input  placeholder="Model" title="Model" type="text" ng-model="navs.nav.model" class="clo23 required-b" required/>
-                 <fieldset class="clo100">
-                 <legend class="wa b0 tac">Gallery</legend>
+                 <span class="clo88 txtr"></span>
+                 <input  placeholder="Tax" title="Tax" type="Number" ng-model="appData.store.tax" step="0.001" class="clo10 required-b" required/>
+                 <input  placeholder="Store Name" title="Store Name" type="text" ng-model="appData.store.name" class="clo48 required-b" required/>
+                 <input  placeholder="phoneNum1" title="phoneNum1" type="text" ng-model="appData.store.phoneNum1" class="clo23 required-b" required/>
+                 <input  placeholder="phoneNum2" title="phoneNum2" type="text" ng-model="appData.store.phoneNum2" class="clo23" />
+
+                 <input  placeholder="webSite" title="webSite" type="text" ng-model="appData.store.webSite" class="clo48" />
+                 <input  placeholder="Fax" title="Fax" type="Number" ng-model="appData.store.fax" class="clo23" />
+                 <input  placeholder="Email" title="Email" type="text" ng-model="appData.store.email" class="clo23" />
+                 
+
+                 <input  placeholder="Address" title="Address" type="text" ng-model="appData.store.addressInfo.address" class="clo48" />
+                 <input  placeholder="State" title="State" type="text" ng-model="appData.store.addressInfo.state" class="clo16" />
+                 <input  placeholder="City" title="City" type="text" ng-model="appData.store.addressInfo.city" class="clo16" />
+                 <input  placeholder="Zipcode" title="Zipcode" type="text" ng-model="appData.store.addressInfo.zipcode" class="clo16" />
+
+                 <fieldset class="clo100 psr">
+                      <!-- <select  ng-model="appData.store.model" class="psa pl clo10" style="top:25px;left:10px;">
+                       <option ng-repeat="item in ['m1','m2']"  value="m1">{{item}}</option>
+                      </select> -->
+                 <legend class="wa b0 txtc">Gallery</legend>
                   <div class="flexTable">
-                  <div ng-repeat="item in navs.nav.gallerys" class="item-1 psr"
-                    style="position:relative;background: url('{{ME.path}}{{item.name}}');background-size: cover;background-repeat: no-repeat;" >
+                  <div ng-repeat="item in appData.store.gallerys" class="item-1 psr"
+                    style="position:relative;background: url('{{ME.path}}{{item.picture}}');background-size: cover;background-repeat: no-repeat;" >
                      <i class="fa fa-close" ng-click="delPicture($index)"></i>
                      <input class="psa pl clo100" style="bottom:-25px;" ng-model="item.title"/>
                     </div>
-
-                    <div  class="item-1" ng-click="uploadPicture('navsPicture')" ><h1 class="clo100">+</h1></div>
+                    <div  class="item-1" ng-click="uploadPicture('gallery')" ><h1 class="clo100">+</h1></div>
                   </div>
                  </fieldset>
                  </div>

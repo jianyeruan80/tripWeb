@@ -179,6 +179,53 @@ $scope.getRoles=function(){
  
 })
 .controller('ManagerCtrl', function($scope,$ionicModal, $ionicLoading,$timeout,$ionicPopup,$http,ME,api) {
+$scope.saveStore=function(){
+               var currentUrl="stores";
+                var method="POST";
+                if($scope.appData.store && $scope.appData.store._id){
+                  var currentUrl="stores/"+$scope.appData.store._id;
+                  method="PUT";
+                }
+                alert($scope.appData.store._id)
+      api.request(method,currentUrl,$scope.appData.store).then(function(data){
+            $scope.appData.store=data;
+       })
+}
+
+  $scope.showPreview=function(o){
+    var byId=o.id;
+    var file = document.getElementById(byId);
+    var oDataSource = new FormData();
+      oDataSource.append('picture', file.files[0]);
+      var currentUrl="uploadPic",method="POST";
+      api.request(method,currentUrl,oDataSource,{},{ 'Content-Type': undefined}).then(function(data){
+        $scope.appData.store.logo=data;
+        file.value=null; 
+       })
+}
+  $scope.showMorePreview=function(o){
+    var byId=o.id;
+    var file = document.getElementById(byId);
+    var oDataSource = new FormData();
+      oDataSource.append('picture', file.files[0]);
+      var currentUrl="uploadPic",method="POST";
+      api.request(method,currentUrl,oDataSource,{},{ 'Content-Type': undefined}).then(function(data){
+        $scope.appData.store.gallerys=$scope.appData.store.gallerys || [];
+        $scope.appData.store.gallerys.push({"picture":data});
+        file.value=null; 
+       })
+}
+$scope.delPicture=function(index){
+   $scope.appData.store.gallerys.splice(index,1);
+}
+$scope.getStore=function(){
+       var currentUrl="stores/merchantId";    
+       api.request("GET",currentUrl).then(function(data){
+         $scope.appData.store=data;
+         console.log(data);
+       })
+  }
+  $scope.getStore();
 /*$scope.appData.store.vedios=$scope.appData.store.vedios || [];
         $timeout(function(){
           $scope.videoHTML ='<video id="video"  src="http://www.videogular.com/assets/videos/videogular.mp4" style="width:300px;height:240px" controls></video>'; 

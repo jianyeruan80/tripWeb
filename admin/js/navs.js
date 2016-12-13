@@ -71,7 +71,7 @@ angular.module('server.navs',[])
       var currentUrl="uploadPic",method="POST";
       api.request(method,currentUrl,oDataSource,{},{ 'Content-Type': undefined}).then(function(data){
         $scope.navs.nav.gallerys=$scope.navs.nav.gallerys || [];
-        $scope.navs.nav.gallerys.push({"name":data});
+        $scope.navs.nav.gallerys.push({"picture":data});
         file.value=null; 
        })
 

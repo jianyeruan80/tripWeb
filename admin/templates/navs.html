@@ -70,7 +70,7 @@
                  <legend class="wa b0 tac">Gallery</legend>
                   <div class="flexTable">
                   <div ng-repeat="item in navs.nav.gallerys" class="item-1 psr"
-                    style="position:relative;background: url('{{ME.path}}{{item.name}}');background-size: cover;background-repeat: no-repeat;" >
+                    style="position:relative;background: url('{{ME.path}}{{item.picture}}');background-size: cover;background-repeat: no-repeat;" >
                      <i class="fa fa-close" ng-click="delPicture($index)"></i>
                      <input class="psa pl clo100" style="bottom:-25px;" ng-model="item.title"/>
                     </div>

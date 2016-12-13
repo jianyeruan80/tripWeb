@@ -8,12 +8,14 @@ html,body {
 body{font-size:1.5rem;}
 a {text-decoration: none;}
 
-.clo10{width:10%;}.clo20{width:20%;}.clo30{width:30%;}.clo40{width:40%;}.clo50{width:50%;}.clo60{width:60%;}.clo10{width:70%;}.clo10{width:80%;}.clo90{width:90%;}.clo100{width:100%;}
-.clo5{width:5%;}.clo15{width:15%;}.clo25{width:25%;}.clo35{width:35%;}.clo45{width:45%;}.clo55{width:55%;}.clo65{width:65%;}.clo15{width:75%;}.clo15{width:85%;}.clo95{width:95%;}
-.clo3{width:3%;}.clo13{width:13%;}.clo23{width:23% !important;}.clo33{width:33% !important}.clo43{width:43%;}.clo53{width:53%;}.clo63{width:63%;}.clo13{width:73%;}.clo13{width:83%;}.clo93{width:93%;}
-.clo8{width:8%;}.clo8{width:18%;}.clo28{width:28%;}.clo38{width:38%;}.clo48{width:48% !important;}.clo58{width:58%;}.clo68{width:68%;}.clo18{width:78%;}.clo18{width:88%;}.clo98{width:98%;}
-.clo2{width:2%;}.clo2{width:12%;}.clo22{width:22%;}.clo32{width:32%;}.clo42{width:42%;}.clo52{width:52%;}.clo62{width:62%;}.clo12{width:72%;}.clo12{width:82%;}.clo92{width:92%;}
-.clo1{width:1%;}.clo1{width:11%;}.clo21{width:21%;}.clo31{width:31%;}.clo41{width:41%;}.clo51{width:51%;}.clo61{width:61%;}.clo11{width:71%;}.clo11{width:81%;}.clo91{width:91%;}
+.clo10{width:10% !important}.clo20{width:20%;}.clo30{width:30%;}.clo40{width:40%;}.clo50{width:50%;}.clo60{width:60%;}.clo70{width:70%;}.clo80{width:80%;}.clo90{width:90%;}.clo100{width:100%;}
+.clo5{width:5%;}.clo15{width:15%;}.clo25{width:25%;}.clo35{width:35%;}.clo45{width:45%;}.clo55{width:55%;}.clo65{width:65%;}.clo75{width:75%;}.clo85{width:85%;}.clo95{width:95%;}
+.clo3{width:3%;}.clo13{width:13%;}.clo23{width:23% !important;}.clo33{width:33% !important}.clo43{width:43%;}.clo53{width:53%;}.clo63{width:63%;}.clo73{width:73%;}.clo13{width:83%;}.clo93{width:93%;}
+.clo6{width:6%;}.clo16{width:16% !important;}.clo26{width:26%;}.clo36{width:36%;}.clo46{width:46% !important;}.clo56{width:56%;}.clo66{width:66%;}.clo76{width:76%;}.clo16{width:86%;}.clo96{width:96%;}
+.clo8{width:8%;}.clo8{width:18%;}.clo28{width:28%;}.clo38{width:38%;}.clo48{width:48% !important;}.clo58{width:58%;}.clo68{width:68%;}.clo78{width:78%;}.clo88{width:88% !important;}.clo98{width:98%;}
+.clo9{width:9%;}.clo19{width:19% !important}.clo29{width:29%;}.clo39{width:39%;}.clo49{width:49% !important;}.clo59{width:59%;}.clo69{width:69%;}.clo79{width:79%;}.clo89{width:89%;}.clo99{width:99%;}
+.clo2{width:2%;}.clo2{width:12%;}.clo22{width:22%;}.clo32{width:32%;}.clo42{width:42%;}.clo52{width:52%;}.clo62{width:62%;}.clo72{width:72%;}.clo12{width:82%;}.clo92{width:92%;}
+.clo1{width:1%;}.clo1{width:11%;}.clo21{width:21% !important;}.clo31{width:31%;}.clo41{width:41%;}.clo51{width:51%;}.clo61{width:61%;}.clo71{width:71%;}.clo81{width:81%;}.clo91{width:91%;}
 .required-t{border-top:solid red 1px;}
 .required-b{border-bottom:solid red 1px !important;}
 .required-l{border-left:solid red 1px;}
@@ -30,6 +32,7 @@ a {text-decoration: none;}
 .modal{position:absolute;width:100%;height:100%;top:0%;left:0%;z-index: 100;  }
 .dsn{display:None}.dss{display:""}.psr{position:relative;}.psa{position:absolute;}
 .pt{top:0;}.pl{left:0;}.pr{right:0;}.pb{bottom:0;}
+
 .alert{
   position:absolute;-webkit-transform:translate(-50%, 0%);
   -ms-transform:translate(-50%, 0%);transform:translate(-50%, 0%);
@@ -56,7 +59,7 @@ a {text-decoration: none;}
 .disabled { pointer-events: none; }
 .wa{width:auto}
 .b0{border:0;}.bc1{border:solid #ccc 1px;}
-.tac{text-align:center;}.tal{text-align:left;}.tar{text-align:right;}
+.txtr{text-align:right;}.txtc{text-align:center;}.txtl{text-align:left;}
 .logo{width:65px;border-radius:5px;margin-top:5px}
 /*******************************Button***************************/
 
@@ -384,20 +387,20 @@ input[type=checkbox]:disabled + label span {
 /*******************Table-End*********************************/
 /**************************Form-Start*****************************************/
 .formcontainer {position: relative;width: 100%;}
-.formcontainer form {padding:20px;}
+.formcontainer form {padding:10px;}
 .formcontainer .content {display:flex;justify-content:space-between;flex-flow:row wrap}
 .formcontainer .icon_wrapper {width: 100%;text-align:center;}
 .formcontainer .logo {width: 100px;margin-top:10px; border-radius:10px;}
 .formcontainer input[type='text'], input[type='email'],input[type='number'], select, textarea {
   background: none;
   border: none;
-  border-bottom: solid 2px #aaa;
+  border-bottom: solid 1px #aaa;
   color: #000;
-  font-size: 1.000em;
+  font-size: 1.6rem
   font-weight: 400;
   letter-spacing: 1px;
-  margin: 0em 0 1.875em 0;
-  padding: 0 0 0.875em 0;
+  margin: 0 0 1.5em 0;
+  padding: 0 0 0.2em 0;
   /*text-transform: uppercase;*/
   /*text-transform: capitalize;*/
   width: 100%;
@@ -414,7 +417,7 @@ input[type=checkbox]:disabled + label span {
 }
 .formcontainer input[type='text']:focus, [type='email']:focus,[type='number']:focus, textarea:focus {
   outline: none;
-  padding: 0 0 0.875em 0;
+  padding: 0 0 0.4em 0;
 }
 
 /*****************************Form-END******************************************/
