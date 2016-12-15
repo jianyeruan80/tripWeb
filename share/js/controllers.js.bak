@@ -1,0 +1,314 @@
+angular.module('starter.controllers',  ['ion-sticky'])
+
+.controller('DashCtrl', function ($scope, $timeout,$ionicLoading,publicService,toaster,$ionicActionSheet) {
+ $scope.testcreate=function(){
+  $scope.messageData.shareTitle="response.name";
+          $scope.messageData.shareMeasage="response.message";
+          $scope.messageData.shareCaption="response.caption";
+          
+
+          //angular.copy({"s":"s"}, $scope.messageData.from);
+          publicService.sendService("POST","api/share",$scope.messageData).
+                             then(function(d){
+                              
+                          // $ionicLoading.hide();
+                 });
+ }  
+ 
+$scope.messageData={};
+$scope.share=function(id){
+FB.api("/"+id,  function (response) {
+        if (response && !response.error) {
+          $scope.messageData.shareTitle=response.name;
+          $scope.messageData.shareMeasage=response.message;
+          $scope.messageData.shareCaption=response.caption;
+          $scope.messageData.shareTitle=response.name;
+          angular.copy(response.from, $scope.messageData.from);
+          publicService.sendService("POST","api/share",$scope.messageData).
+                             then(function(d){
+                              
+                          // $ionicLoading.hide();
+                 });
+          //$scope.messageData.shareFrom=response.caption;
+        }
+    }
+);
+                          
+                       
+                
+ /*  $.ajax({
+caption:
+description:
+message:
+name:
+from:
+       url: "https://graph.facebook.com/"+id,
+       dataType: "GET",
+       crossDomain: true,
+       data: {
+           maxRows: 12,
+           name_startsWith: request,
+           callback: ''
+       },
+       success: function(data) {
+         console.log(data);
+       }
+   });*/
+ }
+ $scope.sendMessage=function(){
+             // alert("sendMessage");
+             // $scope.messageData={};
+                console.log($scope.messageData);
+              publicService.sendService("POST","api/share",$scope.messageData).
+                             then(function(d){
+                              
+                          
+                            $ionicLoading.hide();
+                 });
+
+         
+        
+}
+
+ $scope.postFB=function(o){
+
+FB.ui({
+        method: 'feed',
+        name: "testshare",
+        link: "http://m.menusifu.com",
+        picture: "http://www.baidu.com/img/bd_logo1.png",
+        caption: "测试分享",
+        description: "description"
+    },
+   function(response) {
+     if (response && response.post_id) {
+       alert('Post was published.');
+  
+       $scope.share(response.post_id);
+
+     } else {
+     
+     }
+   }
+ );
+}
+  var o="ID";
+  $scope.loginAndPost=function(o){  
+     
+
+    FB.login(function (response) { 
+                
+        
+      
+        if (response.authResponse) { 
+              
+          postFB(o);
+          
+        } else { 
+                    //alert('User cancelled login or did not fully authorize.'); 
+                } 
+            }, { scope: 'email,user_location,offline_access,publish_stream,publish_actions,link,birthday,picture' }); 
+  
+  } 
+  
+
+   $scope.uploadData={};
+   $scope.showActionSheet = function() {
+
+   // Show the action sheet
+   
+   var hideSheet = $ionicActionSheet.show({
+     buttons: [
+       { text: 'faceBook' },
+       { text: 'wechat' }
+     ],
+     //destructiveText: 'Delete',
+    // titleText: 'Modify your album',
+    cancelText: 'Cancel',
+     cancel: function() {
+           hideSheet();
+        },
+       
+     buttonClicked: function(index) {
+       if(index==0){
+        alert("xxxxxxxxxxxxx");
+            FB.getLoginStatus(function(response) {
+
+              if (response.authResponse) {
+                alert("11111111111111");
+              $scope.postFB(o);
+
+           }else{
+            alert("22222222222222222");
+                  $scope.loginAndPost(o);
+           }
+
+          })
+       }
+       return true;
+     }
+   });
+
+   // For example's sake, hide the sheet after two seconds
+ /*  $timeout(function() {
+     hideSheet();
+   }, 2000);*/
+
+ };
+
+   $scope.upload = function () {
+    alert("uploadupload");
+            $ionicLoading.show({ content: 'Loading',animation: 'fade-in', showBackdrop: true, maxWidth: 200,showDelay: 0 });
+              if(typeof($scope.uploadData.imgData) !="undefined"){
+            
+               publicService.sendService("POST","api/upload",$scope.uploadData).
+                     then(function(d){
+                      
+                     $scope.showActionSheet();
+                    $ionicLoading.hide();
+         });
+
+         
+          }else{
+
+             toaster.pop('error', "",'please take a picture,then share');
+             $ionicLoading.hide();
+          }
+    };
+
+
+
+
+var imgl=document.getElementById('imgUpload');
+ var preview = document.getElementById('preview'); 
+
+ imgl.onchange=function(){
+
+ if (!this.files.length) return;
+$ionicLoading.show({ content: 'Loading',animation: 'fade-in', showBackdrop: true, maxWidth: 200,showDelay: 0 });
+var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+      
+  var width=500;
+
+
+ lrz(file, {
+            width:width,
+            
+            quality:0.7,
+            before: function() {
+                console.log('压缩开始');
+            },
+            fail: function(err) {
+                console.error(err);
+            },
+            always: function() {
+                console.log('压缩结束');
+                $ionicLoading.hide();
+            },
+            done: function (results) {
+               console.log(results);
+               $scope.uploadData.imgData=results.base64;
+                preview.src = results.base64;
+            }
+}
+)
+
+ /*var reader  = new FileReader();
+reader.onloadend = function () {
+        // var image = new Image(); 
+      //   image.src=reader.result;
+        // alert(preview.width);
+         preview.src = reader.result;
+        
+        })
+    if (typeof(file) !="undefined") {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } */
+
+ }
+
+
+$scope.previewOpen=function(){
+     
+        imgl.click();
+   
+     }
+
+})
+
+
+
+
+
+.controller('ChatsCtrl', function($scope, Chats) {
+
+
+ TwittSrv.getTwitts().then(function(twitts){
+    $scope.twitts = twitts;
+  });
+
+  $scope.doRefresh = function(){
+    TwittSrv.getNewTwitts().then(function(newTwitts){
+      $scope.twitts = newTwitts.concat($scope.twitts);
+    }).finally(function() {
+      // Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
+
+  $scope.loadMore = function(){
+    TwittSrv.getMoreTwitts().then(function(olderTwitts){
+      $scope.twitts = $scope.twitts.concat(olderTwitts);
+    }).finally(function() {
+      // Stop the ion-infinite-scroll from spinning
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    });
+  };
+
+
+
+});
+
+function previewOpen(){
+
+      var preview = document.getElementById('preview'); 
+       //var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+
+
+
+window.fbAsyncInit = function () {
+        FB.init({
+            appId: '1628401260728929', // App ID895826577130683
+            //channelUrl: 'http://localhost', // Channel File
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true , // parse XFBML
+      oauth : true 
+      
+        });
+    
+       
+    };
+
+    // Load the SDK asynchronously
+    (function (d) {
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    } (document));

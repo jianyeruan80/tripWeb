@@ -24,8 +24,8 @@ angular.module('starter.controllers', [])
             ];
             
        var page = 1;
-        var pageSize = 20;
-
+        var pageSize =4;
+/*
        $timeout(function(){},100)
         myService.getImages(function(data){
 
@@ -57,7 +57,49 @@ angular.module('starter.controllers', [])
         };
 //        $scope.$on("waterfall:loadMore",function(){//滚动自动填充事件
 //            $scope.loadMoreData();
-//        })     
+//        })  */ 
+
+ myService.getImages(function(data){
+
+            $scope.images = [];
+            $scope.results = data.results.slice(0,page*pageSize);
+            for (var i = 0; i < $scope.results.length; i++) {
+                $scope.images.push($scope.results[i]);
+            }
+            $ionicLoading.hide();
+             
+        })
+   $scope.moredata = false;
+
+    $scope.loadMoreData=function()
+    {
+     // $scope.text = "加载中，请稍后···";
+     //console.log("111111111111")
+           // $timeout(function(){
+               page++;
+                
+                myService.getImages(function(data){
+                    //$scope.images = [];
+                   // console.log(data)
+                    $scope.results = data.results.slice(page*pageSize,page*pageSize+pageSize);
+                    console.log($scope.results);
+                    if ($scope.results.length == 73) {
+                         $scope.moredata=true;
+                         alert( $scope.moredata)
+                    }
+                    console.log("xxxxxxxxxxxxxxx");
+                    console.log( $scope.results);
+                    for (var i = 0; i < $scope.results.length; i++) {
+                        $scope.images.push($scope.results[i]);
+                    }
+                     $scope.$broadcast('scroll.infiniteScrollComplete');
+                })
+                
+            //},500);
+     
+    };
+
+    $scope.items=[];  
  })
 
 

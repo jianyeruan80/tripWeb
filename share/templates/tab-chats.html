@@ -1,0 +1,39 @@
+<ion-view view-title="menusifu message">>
+        <ion-header-bar class="bar-calm">
+          <h1 class="title">Timeline</h1>
+        </ion-header-bar>
+        <ion-content>
+          <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+          
+          <div class="list" style="padding:0;margin:0">
+
+       <a class="item"  href="{{item.shareLink}}" ng-repeat="item in [1,2,3,4,5,6,7,8]" target="_blank" style="position:relative;padding:0;height:100px;background:red;margin:19px;">
+
+     <!--   <img src="http://52.10.242.31/{{item.sharePictureUrl}}"  style="padding:3px;width:130px;">
+       <img src="http://graph.facebook.com/{{item.shareFrom.id}}/picture?type=large" width="40px;" height="40px" style="position:absolute;left:100px;top:1px;border-radius:20px;border:solid #ccc 1px;">
+        <h2 style="position:absolute;top:3px;left:150px;">{{item.shareFrom.name}}</h2>
+        <p style="position:absolute;top:20px;left:150px;">{{item.shareMessage}}</p> -->
+       <!-- <img src="http://52.10.242.31/{{item.sharePictureUrl}}" width="40px;" height="40px" style="left:100px;border-radius:20px;border:solid red 1px;">
+       <h2 style="line-height:30px;border:solid red 1px;height:40px;position:absolute;top:8px;left:150px;"> {{item.shareName}}
+        </h2>
+       <p>{{item.shareName}}sffgfdgfgfdgfgdgfggggggggggggggggfgfgfgfgfgfgf</p> -->
+         
+    </a>
+           <!--  <a class="item" href="#" ng-repeat="item in shareMessages">
+              <img src="http://52.10.242.31/{{item.sharePictureUrl}}">
+              <h2>{{item.shareName}}</h2>
+              <div>{{item.shareMessage}}</div>-moz-border-radius: 15px;      /* Gecko browsers */
+    -webkit-border-radius: 15px;   /* Webkit browsers */
+    border-radius:15px;    
+              <div style="position:absolute;right:0px;width:200px;border:solid red 1px;">
+                  <img src="http://52.10.242.31/{{item.sharePictureUrl}}" width="200px;" />
+              </div>
+            </a> -->
+           
+
+
+          </div>
+
+          <ion-infinite-scroll ng-if="moreDataCanBeLoaded" on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+        </ion-content>
+      </ion-view>

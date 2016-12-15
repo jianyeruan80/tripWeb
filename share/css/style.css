@@ -1,0 +1,27 @@
+/* Empty. Add your own CSS if you like */
+.upload-btn {
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -20px 0 0 -50px;
+}
+.upload-btn button {
+  display: block;
+  width: 100px;
+  height: 40px;
+  background: transparent;
+  border: 0;
+  color: #ccc;
+  font-size: 40px;
+}
+.upload-btn input[type="file"] {
+  left: 0;
+  opacity: 0;
+  padding: 7px;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  cursor: pointer;
+}

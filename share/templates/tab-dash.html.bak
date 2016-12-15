@@ -1,0 +1,58 @@
+<ion-view view-title="test 餐厅">
+  <ion-content class="padding">
+
+
+
+   <div class="list card">
+ <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#">
+      <i class="icon ion-thumbsup"></i>
+      拍照上传送、分享送... XXXXX
+    </a>
+    
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+	    
+    </a>
+  </div>
+  <div class="item item-avatar">
+    <img src="mcfly.jpg">
+    <h2>电话：366443131</h2>
+    <p>Address:xxxxxxxxxxxxxxx</p>
+  </div>
+
+  <div class="item item-body">
+
+ <!--input type="file" ng-file-select="onFileSelect($files)"-->
+    
+    <input type="file" ngf-select=""  ng-model="files" ngf-multiple="multiple" onchange="previewOpen()"/> upload</input>
+  
+     <div ng-click="upload()">ssssssss</div>
+
+   <img id="preview" src="http://ss.bdimg.com/static/superplus/img/logo_white_ee663702.png" />
+
+
+
+  
+    
+    <p>
+      About:
+     This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.
+    </p>
+    <p>
+      <href="#" class="subdued">1 Like</a>
+      <div ng-click="upload()" class="subdued">5 Comments</div>
+    </p>
+  </div>
+
+</div>
+  </ion-content>
+</ion-view>
+
+
+
+
+

@@ -65,11 +65,13 @@
                 <div    style="height:100%;background-size:cover;background-image:url('img/3.jpg')"></div>
               </ion-slide>
             </ion-slide-box>
-
+<!--   <ion-item ng-repeat="item in items"  item="item" href="#{{item.id}}">
+        Item {{item.id}}
+    </ion-item> -->
 <div style="color:#fff;font-size:20px;margin:15px 0 10px 3%">
 <span class="angleActiveRight">美国旅游</span>   <span class="angleRight">加拿大旅游</span> <span class="angleRight">欧洲旅游</span></div>   
  <ul class="waterfall-list" ng-waterfall cols="3" col-margin="10" style="margin-left:3%;width:80%;">
-        <li ng-repeat="image in images" repeat-finished>
+        <li ng-repeat="image in images track by $index " repeat-finished>
             <div class="data-block"  style="background:#fff">
                 <img src="{{image.url}}" alt="{{image.summary}}" class="imgHo"/>
                 <p style="font-size: 20px">{{image.title}}纽约一日游加长版，深度名胜之旅</p>
@@ -83,10 +85,13 @@
             <div  data-number="8 折" class="cpright" style=""></div>
          
         </li>
-        <!-- <div class="loadMore" ng-if="loadMore" ng-infinite-scroll ng-click="loadMoreData()">{{text}}</div> -->
+         
+<ion-infinite-scroll distance="2"
+                     on-infinite="loadMoreData()"
+                     ng-if="!moredata"
+                     ></ion-infinite-scroll>
     </ul>
 
- 
 
   </ion-content>
    <div class="CloudLabel"> 
