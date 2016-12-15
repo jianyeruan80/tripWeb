@@ -24,49 +24,18 @@ angular.module('starter.controllers', [])
             ];
             
        var page = 1;
-        var pageSize =4;
-/*
-       $timeout(function(){},100)
-        myService.getImages(function(data){
+        var pageSize =6;
 
-            $scope.images = [];
-            $scope.results = data.results.slice(0,page*pageSize);
-            for (var i = 0; i < $scope.results.length; i++) {
-                $scope.images.push($scope.results[i]);
-            }
-            $ionicLoading.hide();
-        })
-        $scope.text = "点我加载更多"
-        $scope.loadMore = true;
-        $scope.loadMoreData = function(){
-            $scope.text = "加载中，请稍后···";
-            $timeout(function(){
-                page++;
-                myService.getImages(function(data){
-                    $scope.images = [];
-                    $scope.results = data.results.slice(0,page*pageSize);
-                    if ($scope.results.length == 73) {
-                        $scope.text = "内容已经全部加载完毕"
-                    }
-                    for (var i = 0; i < $scope.results.length; i++) {
-                        $scope.images.push($scope.results[i]);
-                    }
-                })
-                $scope.text = "点我加载更多···"
-            },1500);
-        };
-//        $scope.$on("waterfall:loadMore",function(){//滚动自动填充事件
-//            $scope.loadMoreData();
-//        })  */ 
 
  myService.getImages(function(data){
-
+       $ionicLoading.show();
             $scope.images = [];
             $scope.results = data.results.slice(0,page*pageSize);
             for (var i = 0; i < $scope.results.length; i++) {
                 $scope.images.push($scope.results[i]);
             }
             $ionicLoading.hide();
+              pageSize =2;
              
         })
    $scope.moredata = false;
@@ -80,26 +49,28 @@ angular.module('starter.controllers', [])
                 
                 myService.getImages(function(data){
                     //$scope.images = [];
-                   // console.log(data)
+                  $ionicLoading.show();
                     $scope.results = data.results.slice(page*pageSize,page*pageSize+pageSize);
                     console.log($scope.results);
                     if ($scope.results.length == 73) {
                          $scope.moredata=true;
                          alert( $scope.moredata)
                     }
-                    console.log("xxxxxxxxxxxxxxx");
-                    console.log( $scope.results);
-                    for (var i = 0; i < $scope.results.length; i++) {
+                    $ionicLoading.hide();
+                    $timeout(function(){
+                      for (var i = 0; i < $scope.results.length; i++) {
+                       
                         $scope.images.push($scope.results[i]);
                     }
                      $scope.$broadcast('scroll.infiniteScrollComplete');
+                    },10)
+                    
                 })
                 
-            //},500);
-     
+            
     };
 
-    $scope.items=[];  
+ 
  })
 
 

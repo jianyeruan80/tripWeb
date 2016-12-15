@@ -70,13 +70,13 @@
     </ion-item> -->
 <div style="color:#fff;font-size:20px;margin:15px 0 10px 3%">
 <span class="angleActiveRight">美国旅游</span>   <span class="angleRight">加拿大旅游</span> <span class="angleRight">欧洲旅游</span></div>   
- <ul class="waterfall-list" ng-waterfall cols="3" col-margin="10" style="margin-left:3%;width:80%;">
-        <li ng-repeat="image in images track by $index " repeat-finished>
-            <div class="data-block"  style="background:#fff">
-                <img src="{{image.url}}" alt="{{image.summary}}" class="imgHo"/>
+ <ul class="waterfall-list" ng-waterfall cols="3" col-margin="2" style="margin-left:3%;width:80%;">
+        <li ng-repeat="image in images track by $index " repeat-finished class="zoom-out">
+            <div class="data-block"  style="background:#fff"  >
+                <img src="{{image.url}}" alt="{{image.summary}}" class="imgHo" />
                 <p style="font-size: 20px">{{image.title}}纽约一日游加长版，深度名胜之旅</p>
                 <p>{{image.summary}}</p>
-                   <div  data-number="8 折" class="begin">
+                   <div  data-number="8 折" class="begin zoom-out">
               深度名胜之旅<br/>
               <h1>$500</h1>
             </div>
@@ -86,7 +86,7 @@
          
         </li>
          
-<ion-infinite-scroll distance="2"
+<ion-infinite-scroll distance="15%"
                      on-infinite="loadMoreData()"
                      ng-if="!moredata"
                      ></ion-infinite-scroll>
