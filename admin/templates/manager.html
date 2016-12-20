@@ -16,6 +16,7 @@
             <form enctype="multipart/form-data" method="post" name="navsForm" ng-submit="saveStore()" >
                 <input type="file" name="picture" id="logoPicture" style="display:none" onchange="angular.element(this).scope().showPreview(this)"/>
                 <input type="file" name="picture" id="gallery" style="display:none" onchange="angular.element(this).scope().showMorePreview(this)"/>
+                <input type="file" name="video" id="video" style="display:none" onchange="angular.element(this).scope().showMoreVideo(this)"/>
                 <input type="submit" class="dsn" id="submit-form" value="submit"/>
                 
                 <div class="content">
@@ -39,21 +40,46 @@
                       <!-- <select  ng-model="appData.store.model" class="psa pl clo10" style="top:25px;left:10px;">
                        <option ng-repeat="item in ['m1','m2']"  value="m1">{{item}}</option>
                       </select> -->
-                 <legend class="wa b0 txtc">Gallery</legend>
+                 <legend class="wa b0 txtc"><b>Gallery</b></legend>
                   <div class="flexTable">
                   <div ng-repeat="item in appData.store.gallerys" class="item-1 psr"
                     style="position:relative;background: url('{{ME.path}}{{item.picture}}');background-size: cover;background-repeat: no-repeat;" >
                      <i class="fa fa-close" ng-click="delPicture($index)"></i>
-                     <input class="psa pl clo100" style="bottom:-25px;" ng-model="item.title"/>
+                     <input class="psa pl clo100" style="bottom:-25px;line-height:30px;height:30px" ng-model="item.title"/>
                     </div>
-                    <div  class="item-1" ng-click="uploadPicture('gallery')" ><h1 class="clo100">+</h1></div>
+                       <div  class="item-1" style="flex:0 1 120px;text-align: center;height:200px;font-size:100px;line-height:2" ng-click="uploadPicture('gallery')" >+</div>
                   </div>
                  </fieldset>
+
+                       <fieldset class="clo100 psr">
+                      <!-- <select  ng-model="appData.store.model" class="psa pl clo10" style="top:25px;left:10px;">
+                       <option ng-repeat="item in ['m1','m2']"  value="m1">{{item}}</option>
+                      </select> -->
+                 <legend class="wa b0 txtc"><b>Video</b></legend>
+                  <div class="flexTable">
+                    <div id="ox"></div>
+                       <div  class="item-1" style="flex:0 1 120px;text-align: center;height:200px;font-size:100px;line-height:2" ng-click="uploadPicture('video')" >+</div>
+                  </div>
+                 </fieldset>
+               <!--    <fieldset class="clo100 psr">
+                   <legend class="wa b0 txtc"><b>video</b></legend>
+                    <div class="flexTable">
+                      <div id="ox"/>
+  dd
+                        <div  class="item-1" style="flex:0 1 120px;text-align: center;height:200px;font-size:100px;line-height:2" ng-click="uploadVideo('video')" >+</div>
+                    </div>
+                   </fieldset> -->
                  </div>
               </form>
         </div>
 </fieldset>
-<!-- <div class="formcontainer">
+<!-- 
+<video width="400" controls>
+  <source src="mov_bbb.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+<div class="formcontainer">
        <div class="icon_wrapper" ng-click="uploadPicture('logo')" >
             <img src="{{ME.path}}{{appData.store.logo?appData.store.logo:'defalut.jpg'}}" id="logoSrc"   onError="defaultLogo()"  class="logo" />
         </div>
