@@ -4,12 +4,12 @@ angular.module('server.controllers', []) /*['ng-sortable']*/
               return (data & 3)>0;                
            }
         })
-  .filter("trustUrl", ['$sce', function ($sce) {
+
+.filter("trustUrl",  function ($sce) {
         return function (recordingUrl) {
             return $sce.trustAsResourceUrl(recordingUrl);
         };
-    }])
-
+    })
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$http,$ionicModal,$location,$ionicLoading,$ionicPopup,ME,api) {
   $scope.appData={};
   $scope.appData.store={};
@@ -183,7 +183,7 @@ $scope.getRoles=function(){
  
 })
 .controller('ManagerCtrl', function($scope,$ionicModal, $ionicLoading,$timeout,$ionicPopup,$http,ME,api) {
-
+$scope.Your_URL="http://192.168.1.100:3000/001/bL774R2oxPAy96ZKfmsH_SwL.MP4";
 $scope.saveStore=function(){
                var currentUrl="stores";
                 var method="POST";
@@ -223,7 +223,7 @@ $scope.saveStore=function(){
 $scope.delPicture=function(index){
    $scope.appData.store.gallerys.splice(index,1);
 }
-
+$scope.videoList=[];
   $scope.showMoreVideo=function(o){
     var byId=o.id;
     var file = document.getElementById(byId);
@@ -233,31 +233,40 @@ $scope.delPicture=function(index){
       api.request(method,currentUrl,oDataSource,{},{ 'Content-Type': undefined}).then(function(data){
         $scope.appData.store.videos=$scope.appData.store.videos || [];
         $scope.appData.store.videos.push({"video":data});
+      
+        var tempJson={
+           "active":true,
+           "video":ME.path+data
+        };
+        $scope.videoList.push(tempJson);
         file.value=null; 
-        $scope.loadVideos($scope.appData.store.videos);
-       })
+         })
 }
 $scope.delVideo=function(index){
-   $scope.appData.store.videos.splice(index,1);
+  alert(index);
+    $scope.appData.store.videos.splice(index,1);
+    $scope.videoList.splice(index,1);
 }
-   
 
-        $scope.loadVideos = function(videos) {
-           var html="";
-           for(var i=0;i<videos.length;i++){
-              html+='<video width="400" controls><source src="'+ME.path+videos[i].video+'" type="video/mp4"></video>';
-           }
-          document.getElementById("ox").innerHTML=html;
- };
+
+
+
+
 
 $scope.getStore=function(){
        var currentUrl="stores/merchantId";    
        api.request("GET",currentUrl).then(function(data){
           $scope.appData.store=data;
-          console.log(data)
-           $scope.loadVideos($scope.appData.store.videos);
+          $scope.videoList=[];
+          var tempJson={};
+          for(var i=0;i<data.videos.length;i++){
+            tempJson.active=data.videos[i].active;
+            tempJson.video=ME.path+data.videos[i].video;
+            $scope.videoList.push(tempJson);
+          }
+          console.log($scope.videoList)
 
-         console.log(data);
+         
        })
   }
   $scope.getStore();

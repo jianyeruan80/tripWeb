@@ -44,7 +44,7 @@
                   <div class="flexTable">
                   <div ng-repeat="item in appData.store.gallerys" class="item-1 psr"
                     style="position:relative;background: url('{{ME.path}}{{item.picture}}');background-size: cover;background-repeat: no-repeat;" >
-                     <i class="fa fa-close" ng-click="delPicture($index)"></i>
+                     <i class="fa fa-close" style="font-size:3rem" ng-click="delPicture($index)"></i>
                      <input class="psa pl clo100" style="bottom:-25px;line-height:30px;height:30px" ng-model="item.title"/>
                     </div>
                        <div  class="item-1" style="flex:0 1 120px;text-align: center;height:200px;font-size:100px;line-height:2" ng-click="uploadPicture('gallery')" >+</div>
@@ -57,7 +57,18 @@
                       </select> -->
                  <legend class="wa b0 txtc"><b>Video</b></legend>
                   <div class="flexTable">
-                    <div id="ox"></div>
+                   <div  class="item-1 psr" style="height:300px" ng-repeat="item in videoList  track by $index">
+                   <i class="fa fa-close psa" style="top:2px;font-size:3rem;right:2px;z-index:10"  ng-click="delVideo($index)"></i>
+                   <input type="checkbox" ng-model="item.active"  ng-true-value=true ng-false-value=false  id="checkbox{{$index}}">
+                   <label for="checkbox{{$index}}"  class="psa" style="top:-30px;font-size:2rem;right:-10px;z-index:10"><span></span>{{item}}</label>
+
+                  <video  controls  style="height:100%;width: 100%" >
+                  <source src="{{item.video | trustUrl}}" type="video/mp4">
+  
+ 
+</video>
+</div>
+                   <!--  <div id="ox"></div> -->
                        <div  class="item-1" style="flex:0 1 120px;text-align: center;height:200px;font-size:100px;line-height:2" ng-click="uploadPicture('video')" >+</div>
                   </div>
                  </fieldset>
